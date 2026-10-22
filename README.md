@@ -12,6 +12,19 @@ The firmware is currently designed to be flashed and run from the serial port.
 
 It has been developed using the version 4.3.1 of the [Esp32 IDF].
 
+The Robbo Vision test build enables a non-connectable NimBLE broadcaster named
+`Robbo Vision` alongside Wi-Fi. It does not expose BLE services or exchange
+application data. Build with the pinned Espressif image:
+
+```bash
+docker run --rm -v "$PWD:/project" -w /project espressif/idf:v4.3.1 idf.py build
+sha256sum build/aideck_esp.bin
+```
+
+The BLE name is advertised in the primary advertising packet. After flashing,
+verify discovery with a BLE scanner and run the Wi-Fi stream / CPX checks; a
+successful build alone does not prove radio coexistence on the AI Deck.
+
 To flash and run:
 ```
 $ source ~/path/to/idf/export.sh

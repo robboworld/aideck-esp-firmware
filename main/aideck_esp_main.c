@@ -43,6 +43,7 @@
 #include "test.h"
 #include "wifi.h"
 #include "system.h"
+#include "ble_advertising.h"
 
 /* The LED is connected on GPIO */
 #define BLINK_GPIO 4
@@ -176,6 +177,7 @@ void app_main(void)
 
     wifi_init();
     router_init();
+    ble_advertising_init();
 
     esp_log_set_vprintf(cpx_and_uart_vprintf);
 
